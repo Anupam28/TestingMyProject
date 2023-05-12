@@ -1,9 +1,25 @@
-name: Demo
-run-name: ${{github.actor}} is testing out Github Actions
-on: [push]
+
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+
 
 jobs:
-  Explore-github-actions:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "Hello world"
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
